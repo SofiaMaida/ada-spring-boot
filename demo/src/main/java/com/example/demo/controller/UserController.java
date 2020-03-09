@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -24,20 +25,33 @@ public class UserController {
     }
 
     @PostMapping({ "", "/" })
-    public ResponseEntity createUser(@RequestBody User user) throws URISyntaxException {
+    public ResponseEntity createUser(@Valid @RequestBody User user) throws URISyntaxException {
+        // cuanto la cantidad de elementos que hay en la lista
+        // stream es de las expresiones lambda de java 8, luego la vemos a detalles. OK?
         long count = users.stream().count();
 
+        // if ternary: evalua si la cantidad en la lista es mayor a cero
         User userFromList = (count > 0) ?
+                // en la instruccion true: de la lista saca el ultimo elemento insertado y
+                // lo retorna
                 users.stream().skip(count - 1).findFirst().orElse(null) :
+                // en la instruccion false: retorna un null
                 null;
 
+        // if ternay: para definir el nuevo id del usuario a insertar en la lista
         long id = (userFromList != null) ?
+                // en instruccion true: extrae el id del ultimo usuario, le suma 1 y retorna el nuevo valor
                 userFromList.getId() + 1 :
+                // en la instruccion false: retorna 1 directamente porque la lista esta vacia.
                 1;
 
+        // asigno el id generado en el if ternary anterior al usuario que se quiere agregar
         user.setId(id);
+
+        // agrego el usuario nuevo a la lista.
         users.add(user);
 
+        // retorno el response del la peticion POST.
         return ResponseEntity
                 .created(new URI("/users/" + user.getId()))
                 .body(user);
@@ -69,7 +83,7 @@ public class UserController {
         if (userFromList != null) {
             httpStatus = HttpStatus.OK;
             userFromList.setName(user.getName());
-            userFromList.setLastNane(user.getLastNane());
+            userFromList.setLastName(user.getLastName());
             userFromList.setAge(user.getAge());
         } else {
             httpStatus = HttpStatus.NOT_FOUND;

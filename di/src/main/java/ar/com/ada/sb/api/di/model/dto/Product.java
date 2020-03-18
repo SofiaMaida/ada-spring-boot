@@ -3,7 +3,10 @@ package ar.com.ada.sb.api.di.model.dto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Pattern;
 import java.util.Date;
 
 @Getter @Setter
@@ -12,10 +15,11 @@ public class Product {
 
     private Long id;
 
-    // anotaciones de validadciones
+    @Pattern(regexp = "^[a-zA-ZáéíóúÁÉÍÓÚÜüñÑ\\s]*$", message = "name contains not allowed characters")
     private String nane;
 
-    // anotaciones de validadciones
+    @Future(message = "expire must be a future date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date expire;
 
     public Product(Long id, String nane, Date expire) {

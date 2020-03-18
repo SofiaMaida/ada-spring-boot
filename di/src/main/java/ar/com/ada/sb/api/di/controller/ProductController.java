@@ -1,5 +1,6 @@
 package ar.com.ada.sb.api.di.controller;
 
+import ar.com.ada.sb.api.di.exception.BusinessLogicException;
 import ar.com.ada.sb.api.di.model.dto.Product;
 import ar.com.ada.sb.api.di.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,17 +22,14 @@ public class ProductController {
     private ProductService service;
 
     @PostMapping({ "", "/" })
-    public ResponseEntity addNewProduct(@RequestBody @Valid Product product) {
-        HttpStatus status = HttpStatus.OK;
-
-        try {
-            service.saveNewProduct(product);
-        } catch (Exception e) {
-            status = HttpStatus.BAD_REQUEST;
-        }
-
+    public ResponseEntity addNewProduct(@RequestBody @Valid Product product) throws BusinessLogicException {
+        // Anteriormente existia un try-catch para capturar la posibles execption producida en el
+        // metodo saveNewProduct, pero camo se creo un Advice para las excepciones de tipo
+        // BusinessLogicException ya no es necesario validar eso.
+        // ver el codigo en el servicio.
+        Product productResult = service.saveNewProduct(product);
         return ResponseEntity
-                .status(status)
-                .body(null);
+                .ok()
+                .body(productResult);
     }
 }

@@ -21,16 +21,11 @@ public class ShoppingCarController {
     private ShoppingCarService service;
 
     @PostMapping({ "", "/" })
-    public ResponseEntity addNewShopping(@RequestBody @Valid ShoppingCar shoppingCar) {
-
-        HttpStatus status = HttpStatus.OK;
-
-        try {
-            service.saveShoppingCar(shoppingCar);
-        } catch (Exception e) {
-            status = HttpStatus.BAD_REQUEST;
-        }
-
-        return ResponseEntity.status(status).body(null);
+    public ResponseEntity addNewShopping(@RequestBody @Valid ShoppingCar shoppingCar) throws Exception {
+        // se aplica la misma logica que se explica en ProductController
+        service.saveShoppingCar(shoppingCar);
+        return ResponseEntity
+                .ok()
+                .body(null);
     }
 }

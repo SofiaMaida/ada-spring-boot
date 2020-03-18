@@ -1,10 +1,9 @@
 package ar.com.ada.sb.api.di.controller;
 
 import ar.com.ada.sb.api.di.model.dto.ShoppingCar;
-import ar.com.ada.sb.api.di.service.ShoppingCarService;
+import ar.com.ada.sb.api.di.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +17,7 @@ import javax.validation.Valid;
 public class ShoppingCarController {
 
     @Autowired @Qualifier("shoppingCarService")
-    private ShoppingCarService service;
+    private ShoppingCartService service;
 
     @PostMapping({ "", "/" })
     public ResponseEntity addNewShopping(@RequestBody @Valid ShoppingCar shoppingCar) {

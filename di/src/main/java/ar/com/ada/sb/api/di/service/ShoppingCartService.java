@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service("shoppingCarService")
-public class ShoppingCarService {
+public class ShoppingCartService {
 
     @Autowired @Qualifier("utilsComponent")
     private UtilsComponent component;

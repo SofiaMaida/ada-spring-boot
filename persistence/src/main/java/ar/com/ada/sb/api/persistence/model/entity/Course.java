@@ -1,4 +1,4 @@
-package ar.acom.ada.sb.api.persistence.model.entity;
+package ar.com.ada.sb.api.persistence.model.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package ar.acom.ada.sb.api.persistence.exception;
+package ar.com.ada.sb.api.persistence.exception;
 
 
 import lombok.Getter;

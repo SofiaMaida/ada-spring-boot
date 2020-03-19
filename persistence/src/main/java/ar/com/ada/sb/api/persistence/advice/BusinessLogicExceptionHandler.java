@@ -1,8 +1,8 @@
-package ar.acom.ada.sb.api.persistence.advice;
+package ar.com.ada.sb.api.persistence.advice;
 
-import ar.acom.ada.sb.api.persistence.exception.ApiEntityError;
-import ar.acom.ada.sb.api.persistence.exception.ApiErrorsResponseBody;
-import ar.acom.ada.sb.api.persistence.exception.BusinessLogicException;
+import ar.com.ada.sb.api.persistence.exception.ApiEntityError;
+import ar.com.ada.sb.api.persistence.exception.ApiErrorsResponseBody;
+import ar.com.ada.sb.api.persistence.exception.BusinessLogicException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

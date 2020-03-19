@@ -1,7 +1,7 @@
-package ar.acom.ada.sb.api.persistence.advice;
+package ar.com.ada.sb.api.persistence.advice;
 
-import ar.acom.ada.sb.api.persistence.exception.ApiErrorsResponseBody;
-import ar.acom.ada.sb.api.persistence.exception.ApiFieldError;
+import ar.com.ada.sb.api.persistence.exception.ApiErrorsResponseBody;
+import ar.com.ada.sb.api.persistence.exception.ApiFieldError;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

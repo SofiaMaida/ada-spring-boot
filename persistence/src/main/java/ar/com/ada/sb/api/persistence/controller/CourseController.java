@@ -1,6 +1,6 @@
-package ar.acom.ada.sb.api.persistence.controller;
+package ar.com.ada.sb.api.persistence.controller;
 
-import ar.acom.ada.sb.api.persistence.model.dto.CourseDto;
+import ar.com.ada.sb.api.persistence.model.dto.CourseDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

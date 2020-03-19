@@ -1,4 +1,4 @@
-package ar.acom.ada.sb.api.persistence.model.dto;
+package ar.com.ada.sb.api.persistence.model.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

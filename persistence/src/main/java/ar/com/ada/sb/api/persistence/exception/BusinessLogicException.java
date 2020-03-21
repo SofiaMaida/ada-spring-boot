@@ -11,7 +11,7 @@ import java.util.List;
 
 @Getter @Setter
 @NoArgsConstructor
-public class BusinessLogicException extends Exception {
+public class BusinessLogicException extends RuntimeException {
 
     private String defaultMessage;
     private HttpStatus httpStatus;
